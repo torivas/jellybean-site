@@ -1,0 +1,187 @@
+
+.gallery{
+  padding:120px 6vw;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(177,18,38,.18),
+      transparent 30%
+    ),
+    #080808;
+}
+
+.gallery .kicker{
+  color:#F2A23A;
+
+  text-transform:uppercase;
+
+  letter-spacing:.18em;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  margin-bottom:14px;
+}
+
+.gallery h2{
+  font-family:Anton,sans-serif;
+
+  font-size:clamp(42px,7vw,92px);
+
+  line-height:.92;
+
+  text-transform:uppercase;
+
+  color:#FFF7EA;
+
+  margin-bottom:48px;
+}
+
+/* ========================================= */
+/* GRID */
+/* ========================================= */
+
+.grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1.4fr 1fr 1fr;
+
+  gap:18px;
+
+  align-items:start;
+}
+
+/* ========================================= */
+/* ITEM */
+/* ========================================= */
+
+.grid-item{
+
+  overflow:hidden;
+
+  border-radius:30px;
+
+  background:#111;
+
+  position:relative;
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.35);
+}
+
+/* ========================================= */
+/* IMAGEM */
+/* ========================================= */
+
+.grid-item img{
+
+  width:100%;
+
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  transition:
+    transform .7s ease,
+    filter .7s ease;
+
+  filter:
+    brightness(.92)
+    contrast(1.08)
+    saturate(1.04);
+}
+
+/* ========================================= */
+/* HOVER */
+/* ========================================= */
+
+.grid-item:hover img{
+
+  transform:scale(1.025);
+
+  filter:
+    brightness(1)
+    contrast(1.12)
+    saturate(1.08);
+}
+
+/* ========================================= */
+/* HERO DA GALERIA */
+/* ========================================= */
+
+.grid-item.hero{
+
+  grid-column:span 2;
+}
+
+.grid-item.hero img{
+
+  aspect-ratio:16/9;
+}
+
+/* ========================================= */
+/* MÉDIAS */
+/* ========================================= */
+
+.grid-item.medium img{
+
+  aspect-ratio:4/5;
+}
+
+/* ========================================= */
+/* WIDE */
+/* ========================================= */
+
+.grid-item.wide{
+
+  grid-column:span 2;
+}
+
+.grid-item.wide img{
+
+  aspect-ratio:16/8;
+}
+
+/* ========================================= */
+/* MOBILE */
+/* ========================================= */
+
+@media(max-width:980px){
+
+  .grid{
+
+    grid-template-columns:1fr 1fr;
+  }
+
+  .grid-item.hero,
+  .grid-item.wide{
+
+    grid-column:span 2;
+  }
+
+}
+
+@media(max-width:640px){
+
+  .gallery{
+    padding:90px 6vw;
+  }
+
+  .grid{
+
+    grid-template-columns:1fr;
+  }
+
+  .grid-item.hero,
+  .grid-item.wide{
+
+    grid-column:auto;
+  }
+
+}

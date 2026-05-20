@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Jelly Bean | Show ao Vivo</title>
+
+<link
+rel="icon"
+href="https://lh3.googleusercontent.com/d/1KKr1BAzLpdBIPRWt-TF_NUkYSVmfPsVT"
+/>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap"
+rel="stylesheet"
+/>
+
+<style>
+
+/* ========================================= */
+/* RESET */
+/* ========================================= */
+
+:root{
+  --black:#050505;
+  --red:#B11226;
+  --warm:#FFF7EA;
+  --amber:#F2A23A;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--black);
+  color:var(--warm);
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+}
+
+img{
+  display:block;
+  width:100%;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+section{
+  padding:110px 6vw;
+}
+
+.kicker{
+  color:var(--amber);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+h1,h2{
+  font-family:Anton,sans-serif;
+  text-transform:uppercase;
+  line-height:.92;
+}
+
+h1{
+  font-size:clamp(62px,11vw,150px);
+  margin-bottom:24px;
+}
+
+h2{
+  font-size:clamp(42px,7vw,92px);
+  margin-bottom:24px;
+}
+
+p{
+  color:rgba(255,247,234,.8);
+  line-height:1.7;
+  font-size:18px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:16px 28px;
+
+  border-radius:999px;
+
+  background:var(--red);
+
+  color:white;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+
+  transition:.35s ease;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.btn.secondary{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.16);
+}
+
+.actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:34px;
+}
+
+/* ========================================= */
+/* HERO */
+/* ========================================= */
+
+.hero{
+  min-height:100vh;
+
+  position:relative;
+
+  display:flex;
+  align-items:flex-end;
+
+  overflow:hidden;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+}
+
+.hero-bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(0,0,0,.2) 0%,
+    rgba(0,0,0,.78) 72%,
+    rgba(0,0,0,.96) 100%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(0,0,0,.88) 0%,
+    rgba(0,0,0,.35) 45%,
+    rgba(0,0,0,.2) 100%
+  );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+
+  max-width:820px;
+
+  padding:0 6vw 90px;
+}
+
+.hero p{
+  max-width:620px;
+  font-size:22px;
+}
+
+/* ========================================= */
+/* LIVE SECTION */
+/* ========================================= */
+
+.live-section{
+
+  display:grid;
+
+  grid-template-columns:
+    .9fr 1.1fr;
+
+  gap:60px;
+
+  align-items:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0A0A0A,
+      #111 60%,
+      #17070A
+    );
+}
+
+.live-image{
+
+  border-radius:34px;
+
+  overflow:hidden;
+
+  background:#0B0B0B;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.45);
+}
+
+.live-image img{
+
+  width:100%;
+  height:auto;
+
+  object-fit:contain;
+
+  object-position:center;
+
+  display:block;
+}
+
+/* ========================================= */
+/* GALLERY */
+/* ========================================= */
+
+.gallery{
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(177,18,38,.18),
+      transparent 30%
+    ),
+    #060606;
+}
+
+.gallery-top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-end;
+
+  gap:30px;
+
+  margin-bottom:54px;
+}
+
+.gallery-top p{
+  max-width:520px;
+}
+
+/* HERO DA GALERIA */
+
+.gallery-hero{
+
+  border-radius:34px;
+
+  overflow:hidden;
+
+  background:#0B0B0B;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  margin-bottom:18px;
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.42);
+}
+
+.gallery-hero img{
+
+  width:100%;
+  height:auto;
+
+  object-fit:contain;
+
+  object-position:center;
+
+  display:block;
+
+  transition:transform .7s ease;
+}
+
+.gallery-hero:hover img{
+  transform:scale(1.01);
+}
+
+/* GRID */
+
+.gallery-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr 1fr;
+
+  gap:18px;
+}
+
+/* CARD */
+
+.gallery-card{
+
+  border-radius:28px;
+
+  overflow:hidden;
+
+  background:#0B0B0B;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px;
+
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.32);
+}
+
+/* IMAGEM */
+
+.gallery-card img{
+
+  width:100%;
+  height:auto;
+
+  object-fit:contain;
+
+  object-position:center;
+
+  display:block;
+
+  transition:
+    transform .6s ease,
+    filter .6s ease;
+
+  filter:
+    brightness(.94)
+    contrast(1.06)
+    saturate(1.04);
+}
+
+/* HOVER */
+
+.gallery-card:hover img{
+
+  transform:scale(1.02);
+
+  filter:
+    brightness(1)
+    contrast(1.1)
+    saturate(1.06);
+}
+
+/* ========================================= */
+/* QUOTES */
+/* ========================================= */
+
+.quotes{
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,.76),
+    rgba(0,0,0,.92)
+  ),
+  url('https://lh3.googleusercontent.com/d/1i70uHele5zfAIczDlQlnzUq24LFTKt13');
+
+  background-size:cover;
+  background-position:center;
+}
+
+.quote-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:18px;
+}
+
+.quote{
+
+  border:1px solid rgba(255,255,255,.12);
+
+  background:rgba(0,0,0,.35);
+
+  backdrop-filter:blur(4px);
+
+  border-radius:28px;
+
+  padding:36px;
+
+  font-family:Anton,sans-serif;
+
+  text-transform:uppercase;
+
+  line-height:1;
+
+  font-size:clamp(30px,4vw,54px);
+}
+
+/* ========================================= */
+/* CTA */
+/* ========================================= */
+
+.cta{
+
+  text-align:center;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,.72),
+    rgba(0,0,0,.92)
+  ),
+  url('https://lh3.googleusercontent.com/d/1i70uHele5zfAIczDlQlnzUq24LFTKt13');
+
+  background-size:cover;
+  background-position:center;
+}
+
+.cta-content{
+  max-width:900px;
+  margin:auto;
+}
+
+.cta p{
+  margin-bottom:34px;
+}
+
+/* ========================================= */
+/* FOOTER */
+/* ========================================= */
+
+.footer{
+
+  padding:50px 6vw;
+
+  border-top:1px solid rgba(255,255,255,.08);
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+}
+
+.footer img{
+  width:160px;
+}
+
+/* ========================================= */
+/* MOBILE */
+/* ========================================= */
+
+@media(max-width:980px){
+
+  section{
+    padding:90px 6vw;
+  }
+
+  .live-section,
+  .quote-grid,
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .hero{
+    min-height:92vh;
+  }
+
+  .hero-content{
+    padding-bottom:70px;
+  }
+
+  .hero p{
+    font-size:18px;
+  }
+
+  .footer{
+    flex-direction:column;
+    gap:20px;
+    text-align:center;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ========================================= -->
+<!-- HERO -->
+<!-- ========================================= -->
+
+<section class="hero">
+
+  <div class="hero-bg">
+
+    <img
+      src="https://lh3.googleusercontent.com/d/1tC7UBI0QnVaNlnw_Q_1DeT4LmHZg7oH0"
+      alt="Jelly Bean ao vivo"
+    >
+
+    <div class="hero-overlay"></div>
+
+  </div>
+
+  <div class="hero-content">
+
+    <span class="kicker">
+      Jelly Bean ao vivo
+    </span>
+
+    <h1>
+      Você não assiste. Você canta junto.
+    </h1>
+
+    <p>
+      Rock, pop e refrões que transformam qualquer noite
+      em experiência coletiva.
+    </p>
+
+    <div class="actions">
+
+      <a href="#contato" class="btn">
+        Contrate a banda
+      </a>
+
+      <a href="#fotos" class="btn secondary">
+        Ver fotos
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- LIVE SECTION -->
+<!-- ========================================= -->
+
+<section class="live-section">
+
+  <div class="live-image">
+
+    <img
+      src="https://lh3.googleusercontent.com/d/1xJ_41XefnImHpuBiIHv1RSsXyO07Ciss"
+      alt="Jelly Bean banda ao vivo"
+    >
+
+  </div>
+
+  <div>
+
+    <span class="kicker">
+      Show ao vivo
+    </span>
+
+    <h2>
+      Energia real. Público real.
+    </h2>
+
+    <p>
+      A Jelly Bean transforma bares, eventos e casas
+      de show em noites que crescem junto com o público.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- GALLERY -->
+<!-- ========================================= -->
+
+<section class="gallery" id="fotos">
+
+  <div class="gallery-top">
+
+    <div>
+
+      <span class="kicker">
+        Momentos ao vivo
+      </span>
+
+      <h2>
+        Isso parece um show.
+      </h2>
+
+    </div>
+
+    <p>
+      Uma seleção de momentos reais de palco,
+      crowd, refrão e energia ao vivo.
+    </p>
+
+  </div>
+
+  <!-- HERO DA GALERIA -->
+
+  <div class="gallery-hero">
+
+    <img
+      src="https://lh3.googleusercontent.com/d/1ekBYrFEiKXdWJaJelgITVMbKVZpZ9Jw7"
+      alt="Jelly Bean crowd"
+    >
+
+  </div>
+
+  <!-- GRID -->
+
+  <div class="gallery-grid">
+
+    <div class="gallery-card">
+
+      <img
+        src="https://lh3.googleusercontent.com/d/1ghgQufqHsLr68yFwaBtvt3GWPZ_BmZ0T"
+        alt="Jelly Bean ao vivo"
+      >
+
+    </div>
+
+    <div class="gallery-card">
+
+      <img
+        src="https://lh3.googleusercontent.com/d/1i70uHele5zfAIczDlQlnzUq24LFTKt13"
+        alt="Jelly Bean palco"
+      >
+
+    </div>
+
+    <div class="gallery-card">
+
+      <img
+        src="https://lh3.googleusercontent.com/d/1Gy3XgE3wFUKY5JMBmLuJH3FWBf6yZV9o"
+        alt="Jelly Bean show"
+      >
+
+    </div>
+
+    <div class="gallery-card">
+
+      <img
+        src="https://lh3.googleusercontent.com/d/1iQRdMpRLGd2z1NDzpt9kQct9kNoI1sCl"
+        alt="Jelly Bean público"
+      >
+
+    </div>
+
+    <div class="gallery-card">
+
+      <img
+        src="https://lh3.googleusercontent.com/d/1ZEAXjhcntR47dM_HDRZLmfRmC22KK62C"
+        alt="Jelly Bean energia"
+      >
+
+    </div>
+
+    <div class="gallery-card">
+
+      <img
+        src="https://lh3.googleusercontent.com/d/1MEM1WbwEK_HnRHlR8lfxjBdHycn5ns7I"
+        alt="Jelly Bean ao vivo"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- QUOTES -->
+<!-- ========================================= -->
+
+<section class="quotes">
+
+  <div class="quote-grid">
+
+    <div class="quote">
+      A casa inteira cantando junto.
+    </div>
+
+    <div class="quote">
+      Você sente antes do refrão chegar.
+    </div>
+
+    <div class="quote">
+      Quando essa entra, ninguém fica parado.
+    </div>
+
+    <div class="quote">
+      Não parece um bar. Parece um show.
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CTA -->
+<!-- ========================================= -->
+
+<section class="cta" id="contato">
+
+  <div class="cta-content">
+
+    <span class="kicker">
+      Contrate a Jelly Bean
+    </span>
+
+    <h2>
+      Leve essa energia para o seu evento.
+    </h2>
+
+    <p>
+      Contrate a Jelly Bean e transforme
+      a noite em um show para cantar junto.
+    </p>
+
+    <a
+      href="https://wa.me/5524999999999"
+      class="btn"
+      target="_blank"
+    >
+      Chamar no WhatsApp
+    </a>
+
+  </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FOOTER -->
+<!-- ========================================= -->
+
+<footer class="footer">
+
+  <img
+    src="https://lh3.googleusercontent.com/d/1udxnCLg1JjnQHTzmwTumi0ISsVUKcX2o"
+    alt="Jelly Bean logo"
+  >
+
+  <p>
+    Jelly Bean — música ao vivo com energia de verdade.
+  </p>
+
+</footer>
+
+</body>
+</html>
