@@ -1,48 +1,41 @@
-const menuButton = document.querySelector(".menu-btn");
-const nav = document.querySelector("nav");
+const menuButton = document.querySelector('.menu-btn');
+const nav = document.querySelector('#site-nav');
+
+function closeMenu(){
+  if(!menuButton || !nav) return;
+  nav.classList.remove('active');
+  menuButton.setAttribute('aria-expanded','false');
+  menuButton.setAttribute('aria-label','Abrir menu');
+}
 
 if(menuButton && nav){
-  menuButton.addEventListener("click", () => {
-    nav.classList.toggle("active");
+  menuButton.addEventListener('click',()=>{
+    const isOpen = nav.classList.toggle('active');
+    menuButton.setAttribute('aria-expanded',String(isOpen));
+    menuButton.setAttribute('aria-label',isOpen ? 'Fechar menu' : 'Abrir menu');
   });
 
-  const navLinks = nav.querySelectorAll("a");
+  nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("active");
-    });
+  document.addEventListener('keydown',event=>{
+    if(event.key === 'Escape') closeMenu();
   });
 }
 
-const revealElements = document.querySelectorAll(
-  ".impact, .live-section, .release, .member-card, .gallery, .gallery-card, .gallery-hero, .quote, .cta"
-);
+const revealElements = document.querySelectorAll('.reveal, .reveal-item');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-revealElements.forEach((el) => {
-  el.style.opacity = "0";
-  el.style.transform = "translateY(40px)";
-  el.style.transition = `
-    opacity 1s cubic-bezier(.16,1,.3,1),
-    transform 1s cubic-bezier(.16,1,.3,1)
-  `;
-});
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
+if(reduceMotion || !('IntersectionObserver' in window)){
+  revealElements.forEach(el=>el.classList.add('is-visible'));
+}else{
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
       if(entry.isIntersecting){
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
     });
-  },
-  {
-    threshold:0.12
-  }
-);
+  },{threshold:0.12});
 
-revealElements.forEach((el) => {
-  observer.observe(el);
-});
+  revealElements.forEach(el=>observer.observe(el));
+}
