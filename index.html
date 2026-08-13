@@ -3,507 +3,182 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Jelly Bean | Show ao Vivo</title>
-
-  <meta
-    name="description"
-    content="Contrate a Jelly Bean, banda de rock e pop de Petrópolis, para eventos, pubs, festivais, bares e casas de show."
-  />
-
-  <meta name="theme-color" content="#0B0B0B" />
-
-  <meta property="og:title" content="Jelly Bean | Show ao Vivo" />
-
-  <meta
-    property="og:description"
-    content="Rock, pop e refrões que transformam qualquer noite em uma experiência coletiva."
-  />
-
-  <meta
-    property="og:image"
-    content="https://lh3.googleusercontent.com/d/1tC7UBI0QnVaNlnw_Q_1DeT4LmHZg7oH0"
-  />
-
+  <title>Jelly Bean | Banda de Rock e Pop Rock em Petrópolis</title>
+  <meta name="description" content="Jelly Bean é uma banda de rock e pop rock de Petrópolis, RJ, com repertório marcado por músicas reconhecíveis dos anos 1990 e 2000. Shows para pubs, eventos, festivais e casas de show." />
+  <meta name="theme-color" content="#171717" />
+  <meta property="og:title" content="Jelly Bean | Banda de Rock e Pop Rock em Petrópolis" />
+  <meta property="og:description" content="Rock e pop rock de Petrópolis, com repertório reconhecível, proximidade e uma noite construída junto com o público." />
+  <meta property="og:image" content="https://lh3.googleusercontent.com/d/1tC7UBI0QnVaNlnw_Q_1DeT4LmHZg7oH0" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-
-  <link
-    rel="icon"
-    href="https://lh3.googleusercontent.com/d/1KKr1BAzLpdBIPRWt-TF_NUkYSVmfPsVT"
-  />
-
+  <meta property="og:site_name" content="Jelly Bean" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="https://lh3.googleusercontent.com/d/1KKr1BAzLpdBIPRWt-TF_NUkYSVmfPsVT" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700;800;900&display=swap"
-    rel="stylesheet"
-  />
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&family=Zilla+Slab:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Jelly Bean",
+    "genre": ["Rock", "Pop Rock"],
+    "sameAs": ["https://instagram.com/bandajellybean"],
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Petrópolis, Rio de Janeiro, Brasil"
+    }
+  }
+  </script>
 </head>
-
 <body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
   <header class="header">
-
-    <a href="#" class="logo" aria-label="Jelly Bean">
-      Jelly Bean
+    <a href="#inicio" class="brand" aria-label="Jelly Bean - início">
+      <img src="https://lh3.googleusercontent.com/d/1udxnCLg1JjnQHTzmwTumi0ISsVUKcX2o" alt="Logo Jelly Bean" class="brand-logo" />
     </a>
 
-    <button
-      class="menu-btn"
-      type="button"
-      aria-label="Abrir menu"
-    >
-      ☰
+    <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
+      <span aria-hidden="true">☰</span>
     </button>
 
-    <nav>
-      <a href="#show">Show</a>
-      <a href="#release">A banda</a>
+    <nav id="site-nav" aria-label="Navegação principal">
+      <a href="#experiencia">O show</a>
+      <a href="#banda">A banda</a>
       <a href="#fotos">Fotos</a>
       <a href="#contato" class="nav-cta">Contratar</a>
     </nav>
-
   </header>
 
-  <main>
-
-    <section class="hero">
-
-      <div class="hero-bg">
-
-        <img
-          src="https://lh3.googleusercontent.com/d/1tC7UBI0QnVaNlnw_Q_1DeT4LmHZg7oH0"
-          alt="Jelly Bean ao vivo no palco"
-          fetchpriority="high"
-        />
-
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="https://lh3.googleusercontent.com/d/1tC7UBI0QnVaNlnw_Q_1DeT4LmHZg7oH0" alt="" fetchpriority="high" />
         <div class="hero-overlay"></div>
-
       </div>
 
-      <div class="hero-content">
-
-        <span class="eyebrow">
-          Jelly Bean ao vivo
-        </span>
-
-        <h1>
-          Você não assiste. Você canta junto.
-        </h1>
-
-        <p class="hero-text">
-          Rock, pop e refrões que transformam qualquer noite em experiência coletiva.
-        </p>
-
+      <div class="hero-content reveal">
+        <span class="eyebrow">JELLY BEAN · PETRÓPOLIS</span>
+        <h1>Algumas músicas não precisam de apresentação.</h1>
+        <p class="hero-text">Rock e pop rock com repertório reconhecível, proximidade e espaço para o público fazer parte da noite.</p>
         <div class="buttons">
-
-          <a href="#contato" class="btn primary">
-            Contrate a banda
-          </a>
-
-          <a href="#fotos" class="btn secondary">
-            Ver fotos
-          </a>
-
+          <a href="#contato" class="btn primary">Contrate a banda</a>
+          <a href="#fotos" class="btn secondary">Ver registros</a>
         </div>
-
       </div>
-
     </section>
 
-    <section class="impact" id="show">
-
-      <h2>
-        Um show feito para levantar o público.
-      </h2>
-
-      <div class="cards"></div>
-
+    <section class="experience reveal" id="experiencia">
+      <div class="section-label">O SHOW</div>
+      <div class="experience-grid">
+        <div>
+          <h2>Reconhecimento primeiro. Surpresas no caminho.</h2>
+        </div>
+        <div class="experience-copy">
+          <p>A Jelly Bean constrói o repertório entre grandes pontos de conexão e escolhas menos previsíveis que continuam familiares para quem viveu o rock e o pop rock dos anos 1990 e 2000.</p>
+          <p>O show cresce por ondas: músicas para cantar junto, momentos de contraste e retomadas de energia, sempre com a banda completa e duas guitarras.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="live-section">
-
-      <div class="live-image">
-
-        <img
-          src="https://lh3.googleusercontent.com/d/1xJ_41XefnImHpuBiIHv1RSsXyO07Ciss"
-          alt="Jelly Bean banda ao vivo"
-          loading="lazy"
-        />
-
+    <section class="feature reveal">
+      <div class="feature-image">
+        <img src="https://lh3.googleusercontent.com/d/1xJ_41XefnImHpuBiIHv1RSsXyO07Ciss" alt="Jelly Bean em apresentação" loading="lazy" />
       </div>
-
-      <div>
-
-        <span class="kicker">
-          Show ao vivo
-        </span>
-
-        <h2>
-          Energia real. Público real.
-        </h2>
-
-        <p>
-          A Jelly Bean transforma bares, eventos e casas de show em noites que crescem junto com o público.
-        </p>
-
+      <div class="feature-copy">
+        <span class="kicker">PROXIMIDADE</span>
+        <h2>A noite acontece entre a banda e quem está ali.</h2>
+        <p>Sem pose de grandeza e sem transformar o público em cenário. A proposta é simples: tocar bem, reconhecer o ambiente e criar espaço para a música fazer o resto.</p>
       </div>
-
     </section>
 
-    <section class="release" id="release">
-
+    <section class="release reveal" id="banda">
       <div class="release-content">
-
         <div class="release-heading">
-
-          <span class="kicker">
-            A banda
-          </span>
-
-          <h2>
-            A banda por trás da noite.
-          </h2>
-
+          <span class="kicker">A BANDA</span>
+          <h2>Rock adulto, casual e próximo.</h2>
         </div>
 
         <div class="release-text">
-
-          <p>
-            A Jelly Bean é uma banda de rock e pop de Petrópolis que transforma grandes clássicos em uma experiência ao vivo intensa, emocionante e cheia de energia.
-          </p>
-
-          <p>
-            Com um repertório que mistura Oasis, Radiohead, Charlie Brown Jr., CPM 22, Los Hermanos e Pitty, a banda cria shows marcados por conexão com o público, refrões cantados em voz alta e uma atmosfera que cresce a cada música.
-          </p>
-
-          <p>
-            Cada apresentação é construída para envolver do início ao fim: pista cheia, mãos pro alto, celulares acesos e a sensação de estar vivendo um grande momento junto de outras pessoas.
-          </p>
-
-          <p>
-            Com presença forte no palco e um show pensado para manter o público conectado o tempo inteiro, a Jelly Bean vem se consolidando como destaque entre as bandas de música ao vivo em Petrópolis, levando para eventos, pubs, festivais e casas de show uma experiência moderna, vibrante e memorável.
-          </p>
-
+          <p>A Jelly Bean é uma banda de rock e pop rock de Petrópolis, RJ. O repertório tem como centro músicas emocionalmente reconhecíveis dos anos 1990 e 2000, passando por artistas como Oasis, Radiohead, Charlie Brown Jr., CPM 22, Los Hermanos e Pitty.</p>
+          <p>A escolha das músicas não parte de dificuldade ou virtuosismo. Parte da função que cada canção cumpre na noite: abrir conexão, mudar o clima, criar participação, trazer contraste ou fechar um bloco com segurança.</p>
+          <p>A formação permanece completa também nos momentos de menor intensidade. As duas guitarras continuam presentes, com funções complementares de base, textura, riff, contracanto e dinâmica.</p>
         </div>
 
         <div class="members">
-
-          <article class="member-card">
-
-            <div class="member-photo">
-
-              <img
-                src="img/Membros/walter-delanno.jpg"
-                alt="Walter Delanno"
-                loading="lazy"
-              />
-
-            </div>
-
-            <div class="member-info">
-
-              <strong>
-                Walter Delanno
-              </strong>
-
-              <span>
-                voz e guitarra
-              </span>
-
-            </div>
-
+          <article class="member-card reveal-item">
+            <div class="member-photo"><img src="img/Membros/walter-delanno.jpg" alt="Walter Delanno" loading="lazy" /></div>
+            <div class="member-info"><strong>Walter Delanno</strong><span>voz e guitarra</span></div>
           </article>
 
-          <article class="member-card">
-
-            <div class="member-photo">
-
-              <img
-                src="img/Membros/paulinho-carvalho.jpg"
-                alt="Paulinho Carvalho"
-                loading="lazy"
-              />
-
-            </div>
-
-            <div class="member-info">
-
-              <strong>
-                Paulinho Carvalho
-              </strong>
-
-              <span>
-                guitarra e backing vocals
-              </span>
-
-            </div>
-
+          <article class="member-card reveal-item">
+            <div class="member-photo"><img src="img/Membros/paulinho-carvalho.jpg" alt="Paulinho Carvalho" loading="lazy" /></div>
+            <div class="member-info"><strong>Paulinho Carvalho</strong><span>guitarra e backing vocals</span></div>
           </article>
 
-          <article class="member-card">
-
-            <div class="member-photo">
-
-              <img
-                src="img/Membros/fernando-vasques.jpg"
-                alt="Fernando Vasques"
-                loading="lazy"
-              />
-
-            </div>
-
-            <div class="member-info">
-
-              <strong>
-                Fernando Vasques
-              </strong>
-
-              <span>
-                baixo
-              </span>
-
-            </div>
-
+          <article class="member-card reveal-item">
+            <div class="member-photo"><img src="img/Membros/fernando-vasques.jpg" alt="Fernando Vasques" loading="lazy" /></div>
+            <div class="member-info"><strong>Fernando Vasques</strong><span>baixo</span></div>
           </article>
 
-          <article class="member-card">
-
-            <div class="member-photo">
-
-              <img
-                src="img/Membros/henrique-duarte.jpg"
-                alt="Henrique Duarte"
-                loading="lazy"
-              />
-
-            </div>
-
-            <div class="member-info">
-
-              <strong>
-                Henrique Duarte
-              </strong>
-
-              <span>
-                bateria
-              </span>
-
-            </div>
-
+          <article class="member-card reveal-item">
+            <div class="member-photo"><img src="img/Membros/henrique-duarte.jpg" alt="Henrique Duarte" loading="lazy" /></div>
+            <div class="member-info"><strong>Henrique Duarte</strong><span>bateria</span></div>
           </article>
-
         </div>
-
-        <p class="release-closing">
-          Rock e pop ao vivo com emoção, intensidade e músicas que atravessam gerações.
-        </p>
-
       </div>
-
     </section>
 
-    <section class="gallery" id="fotos">
-
+    <section class="gallery reveal" id="fotos">
       <div class="gallery-top">
-
         <div>
-
-          <span class="kicker">
-            Momentos ao vivo
-          </span>
-
-          <h2>
-            Isso parece um show.
-          </h2>
-
+          <span class="kicker">REGISTROS REAIS</span>
+          <h2>Pessoas, palco e momentos que aconteceram.</h2>
         </div>
-
-        <p>
-          Uma seleção de momentos reais de palco, crowd, refrão e energia ao vivo.
-        </p>
-
+        <p>Uma seleção de registros da banda, do público e dos ambientes por onde a Jelly Bean passa.</p>
       </div>
 
-      <div class="gallery-hero">
-
-        <img
-          src="https://lh3.googleusercontent.com/d/1ekBYrFEiKXdWJaJelgITVMbKVZpZ9Jw7"
-          alt="Público cantando no show da Jelly Bean"
-          loading="lazy"
-        />
-
+      <div class="gallery-hero reveal-item">
+        <img src="https://lh3.googleusercontent.com/d/1ekBYrFEiKXdWJaJelgITVMbKVZpZ9Jw7" alt="Público durante apresentação da Jelly Bean" loading="lazy" />
       </div>
 
       <div class="gallery-grid">
-
-        <div class="gallery-card">
-          <img
-            src="https://lh3.googleusercontent.com/d/1ghgQufqHsLr68yFwaBtvt3GWPZ_BmZ0T"
-            alt="Jelly Bean ao vivo"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="gallery-card">
-          <img
-            src="https://lh3.googleusercontent.com/d/1i70uHele5zfAIczDlQlnzUq24LFTKt13"
-            alt="Palco da Jelly Bean"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="gallery-card">
-          <img
-            src="https://lh3.googleusercontent.com/d/1Gy3XgE3wFUKY5JMBmLuJH3FWBf6yZV9o"
-            alt="Show da Jelly Bean"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="gallery-card">
-          <img
-            src="https://lh3.googleusercontent.com/d/1iQRdMpRLGd2z1NDzpt9kQct9kNoI1sCl"
-            alt="Público no show da Jelly Bean"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="gallery-card">
-          <img
-            src="https://lh3.googleusercontent.com/d/1ZEAXjhcntR47dM_HDRZLmfRmC22KK62C"
-            alt="Energia ao vivo da Jelly Bean"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="gallery-card">
-          <img
-            src="https://lh3.googleusercontent.com/d/1MEM1WbwEK_HnRHlR8lfxjBdHycn5ns7I"
-            alt="Jelly Bean em apresentação ao vivo"
-            loading="lazy"
-          />
-        </div>
-
+        <div class="gallery-card reveal-item"><img src="https://lh3.googleusercontent.com/d/1ghgQufqHsLr68yFwaBtvt3GWPZ_BmZ0T" alt="Jelly Bean no palco" loading="lazy" /></div>
+        <div class="gallery-card reveal-item"><img src="https://lh3.googleusercontent.com/d/1i70uHele5zfAIczDlQlnzUq24LFTKt13" alt="Palco da Jelly Bean" loading="lazy" /></div>
+        <div class="gallery-card reveal-item"><img src="https://lh3.googleusercontent.com/d/1Gy3XgE3wFUKY5JMBmLuJH3FWBf6yZV9o" alt="Apresentação da Jelly Bean" loading="lazy" /></div>
+        <div class="gallery-card reveal-item"><img src="https://lh3.googleusercontent.com/d/1iQRdMpRLGd2z1NDzpt9kQct9kNoI1sCl" alt="Público em apresentação da Jelly Bean" loading="lazy" /></div>
+        <div class="gallery-card reveal-item"><img src="https://lh3.googleusercontent.com/d/1ZEAXjhcntR47dM_HDRZLmfRmC22KK62C" alt="Momento de apresentação da Jelly Bean" loading="lazy" /></div>
+        <div class="gallery-card reveal-item"><img src="https://lh3.googleusercontent.com/d/1MEM1WbwEK_HnRHlR8lfxjBdHycn5ns7I" alt="Jelly Bean em apresentação" loading="lazy" /></div>
       </div>
-
     </section>
 
-    <section class="quotes">
-
-      <div class="quote-grid">
-
-        <div class="quote">
-          A casa inteira cantando junto.
-        </div>
-
-        <div class="quote">
-          Você sente antes do refrão chegar.
-        </div>
-
-        <div class="quote">
-          Tem música que conecta desconhecidos.
-        </div>
-
-        <div class="quote">
-          Não parece um bar. Parece um show.
-        </div>
-
-      </div>
-
+    <section class="statement reveal" aria-label="Princípio da banda">
+      <p>Tem refrão que não fica só no palco.</p>
     </section>
 
-    <section class="cta" id="contato">
-
+    <section class="cta reveal" id="contato">
       <div class="cta-content">
-
-        <span class="kicker">
-          Contrate a Jelly Bean
-        </span>
-
-        <h2>
-          Leve essa energia para o seu evento.
-        </h2>
-
-        <p>
-          Contrate a Jelly Bean e transforme a noite em um show para cantar junto.
-        </p>
-
-        <a
-          href="https://wa.me/5524999897472?text=Ol%C3%A1%2C%20quero%20contratar%20a%20Jelly%20Bean%20para%20um%20evento."
-          class="btn primary"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Chamar no WhatsApp
-        </a>
-
+        <span class="kicker">CONTRATAÇÃO</span>
+        <h2>Quer levar a Jelly Bean para o seu evento?</h2>
+        <p>Fale com a banda para consultar disponibilidade, formato e condições.</p>
+        <a href="https://wa.me/5524999897472?text=Ol%C3%A1%2C%20quero%20consultar%20a%20Jelly%20Bean%20para%20um%20evento." class="btn primary" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
       </div>
-
     </section>
-
   </main>
 
   <footer class="footer">
-
     <div class="footer-content">
-
-      <a
-        href="https://instagram.com/bandajellybean"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="instagram-link"
-        aria-label="Instagram da banda Jelly Bean"
-      >
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="21"
-          height="21"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-        </svg>
-
-        <span>
-          @bandajellybean
-        </span>
-
-      </a>
-
-      <img
-        src="https://lh3.googleusercontent.com/d/1udxnCLg1JjnQHTzmwTumi0ISsVUKcX2o"
-        alt="Logo da Jelly Bean"
-        class="footer-logo"
-        loading="lazy"
-      />
-
-      <p>
-        Jelly Bean — música ao vivo com energia de verdade.
-      </p>
-
+      <img src="https://lh3.googleusercontent.com/d/1udxnCLg1JjnQHTzmwTumi0ISsVUKcX2o" alt="Logo Jelly Bean" class="footer-logo" loading="lazy" />
+      <div class="footer-copy">
+        <strong>Jelly Bean</strong>
+        <span>Rock e pop rock · Petrópolis, RJ</span>
+      </div>
+      <a href="https://instagram.com/bandajellybean" target="_blank" rel="noopener noreferrer" class="instagram-link" aria-label="Instagram da banda Jelly Bean">@bandajellybean</a>
     </div>
-
   </footer>
 
   <script src="script.js"></script>
-
 </body>
 </html>
