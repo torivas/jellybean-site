@@ -283,3 +283,34 @@ html{scroll-padding-top:90px}
  .editorial-gallery .gallery-item{transition:none}
  .editorial-gallery .gallery-item:hover{box-shadow:none}
 }
+
+
+/* Show a clear, keyboard-safe fallback when external gallery images cannot load. */
+.gallery-editorial .gallery-image-unavailable{
+  cursor:default;display:grid;place-items:center;
+  background:repeating-linear-gradient(-25deg,#24201d 0 8px,#292420 8px 16px);
+  border-color:rgba(233,227,216,.25);
+}
+.gallery-editorial .gallery-image-unavailable img{display:none}
+.gallery-editorial .gallery-image-unavailable:hover{box-shadow:none}
+.gallery-image-fallback{
+  display:block;max-width:24ch;text-align:center;padding:20px;
+  color:#E9E3D8;font:700 clamp(14px,1.7vw,18px)/1.3 'Archivo Narrow',sans-serif;
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.gallery-image-fallback::before{
+  content:"ARQUIVO / JELLY BEAN";display:block;margin-bottom:12px;
+  font-size:11px;color:#C9BDAA;letter-spacing:.18em;
+}
+.gallery-dialog .gallery-dialog-actions button:hover,
+.gallery-dialog .gallery-dialog-close:hover{
+  background:#343434;border-color:#E9E3D8;
+}
+.gallery-dialog .gallery-dialog-actions button:focus-visible,
+.gallery-dialog .gallery-dialog-close:focus-visible{
+  outline:3px solid #E9E3D8;outline-offset:3px;
+}
+@media(prefers-reduced-motion:reduce){
+ .gallery-dialog .gallery-dialog-actions button,
+ .gallery-dialog .gallery-dialog-close{transition:none}
+}
