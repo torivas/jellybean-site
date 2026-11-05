@@ -108,3 +108,13 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Commit `588aeab`: landmarks e títulos identificáveis por acessibilidade, descrições de imagens corrigidas e `decoding=async` em imagens lazy.
 - Revisão estática concluída. Pendente: screenshot/browser QA em múltiplos viewports, validação das imagens externas, conversão/otimização de mídias e Core Web Vitals reais.
 - Nenhuma imagem original foi alterada; nenhuma mudança ocorreu na `main` ou no site publicado. Sem merge/publicação sem aprovação expressa.
+
+
+## Continuidade: integridade HTML e resiliência da galeria — 05/11/2026
+- Commit `86f0923`: corrigidos 12 atributos malformados de `<img>` introduzidos na edição anterior; leitura de volta confirmou ausência do padrão inválido.
+- Commit `a334688`: galeria reage a imagens que falham, marca miniaturas indisponíveis, remove sua ativação por teclado e mantém a navegação entre imagens carregáveis. Dialog mostra texto de falha se todas não carregarem.
+- Commit `189704a`: estilo de fallback editorial legível para miniaturas indisponíveis, sem gerar pessoas ou modificar fotografias.
+- Auditoria estática de HTML: 16 ocorrências de `<img>`; 9 caminhos `img/` e 6 referências diretas ao Googleusercontent. Esta contagem não equivale a validação de rede ou qualidade do acervo.
+- Readback do GitHub confirmou os três arquivos alterados e a presença do fallback no JavaScript e CSS.
+- Pendente: navegador real (incluindo testes de erro de rede), validação do layout e Lighthouse; otimizar as imagens locais pesadas, substituir fontes externas instáveis por assets autorizados versionados, revisar 34 vídeos individualmente antes de seleção.
+- Produção e branch `main` não alteradas. Identidade/fisionomia das pessoas intactas.
