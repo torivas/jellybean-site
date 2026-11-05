@@ -156,3 +156,13 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Os dois arquivos foram gravados na branch de desenvolvimento; a execução deles depende de um checkout local com as imagens e do ambiente Playwright configurado.
 - Próxima prioridade real: obter acesso aos JPEGs originais por via binária autorizada, executar otimização em cópias, validar faces e rodar as capturas. Não declarar que o site passou no QA antes de executar os testes.
 - `main` e publicação intactas.
+
+
+## Execução efetiva com originais do Drive — 05/11/2026
+- O conector Google Drive permitiu obter 5 fotografias originais no contêiner. Para cada foto foi calculado SHA-1 no formato Git blob e confirmado que coincide exatamente com o SHA do JPEG já presente no GitHub. Arquivos confirmados: `img/hero/jellybean-banda-oficial.jpg`, `img/shows/colonus-vocal.jpg`, `img/shows/coordenadas-palco.jpg`, `img/shows/colonus-banda.jpg`, `img/Membros/fernando-vasques.jpg`.
+- Cópias WebP geradas com Pillow, `EXIF transpose`, `thumbnail` com LANCZOS no limite 1920 px e qualidade 85. Não houve regeneração nem retoque de rostos; fotos originais preservadas.
+- Redução de tamanho conjunta nessas cinco imagens: 11.410.550 bytes para 687.176 bytes (aproximadamente 93,98%). A redução refere-se aos arquivos produzidos; não houve medição de desempenho real do website.
+- Integridade WebP verificada ao abrir as cinco imagens; montagem de contato inspecionada para verificar enquadramento. O pacote ZIP foi produzido no ambiente de trabalho, mas **as cópias WebP ainda não foram enviadas ao repositório**. Não criar referências `srcset` a caminhos inexistentes.
+- Atualizado `index.html` (commit `7b5c329`) com dimensões originais verificadas em sete ocorrências de fotos locais, reduzindo o risco de deslocamento de layout durante o carregamento.
+- Restam três imagens de integrantes não otimizadas nesta rodada, e cinco referências externas no HTML. No Drive, os arquivos homônimos de Walter, Paulinho e Henrique têm tamanhos diferentes dos JPEGs versionados; antes de tratar como mesma versão, comprovar hash/correspondência.
+- Pendências: importar WebPs verificados na branch, verificar referência/fallback visual e executar QA em browser com o repositório completo. Sem merge ou deploy.
