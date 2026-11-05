@@ -28,7 +28,7 @@ try {
       await page.waitForFunction(() => {
         const img = document.querySelector('.editorial-hero-image img');
         return img && img.complete;
-      }, { timeout: 15000 });
+      }, undefined, { timeout: 15000 });
       const overflow = await page.evaluate(() =>
         document.documentElement.scrollWidth > window.innerWidth + 2
       );
