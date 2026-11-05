@@ -118,3 +118,14 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Readback do GitHub confirmou os três arquivos alterados e a presença do fallback no JavaScript e CSS.
 - Pendente: navegador real (incluindo testes de erro de rede), validação do layout e Lighthouse; otimizar as imagens locais pesadas, substituir fontes externas instáveis por assets autorizados versionados, revisar 34 vídeos individualmente antes de seleção.
 - Produção e branch `main` não alteradas. Identidade/fisionomia das pessoas intactas.
+
+
+## Continuidade: redução de dependência externa e smoke tests — 05/11/2026
+- `13b88fe`: imagem de destaque da seção sobre o show trocada de URL Googleusercontent por foto real já versionada, `img/shows/colonus-banda.jpg`. Sem alterações de pixels ou feições.
+- `13b88fe`: miniaturas da galeria recebem `fetchpriority="low"`, sem remover `loading="lazy"`; priorização final deve ser medida em navegador.
+- `458c3e3`: criado `tools/site-smoke-test.cjs`, teste estático local sem bibliotecas, acesso remoto ou GitHub Actions pagos; execução: `node tools/site-smoke-test.cjs` em clone da branch.
+- `3cc6f12`: imagem no lightbox recebeu decodificação assíncrona para manter consistência.
+- Leitura remota confirmou HTML sem atributo `/ decoding` malformado, todas as 16 tags `img` com `alt` e `decoding=async`, e todos os caminhos locais presentes na árvore da branch. Restam 5 referências externas a Googleusercontent.
+- O smoke test foi checado por inspeção de código e validações equivalentes no conector; **a execução do script pelo Node em clone local não foi realizada**.
+- A otimização real dos arquivos JPEG (incluindo um retrato com aproximadamente 6,9 MB), revisão dos 34 vídeos, teste visual com Chrome e aferição Lighthouse continuam pendentes. Não afirmar ganhos numéricos de desempenho.
+- Sem merge ou publicação; produção `main` preservada, fotos originais e fisionomias intactas.
