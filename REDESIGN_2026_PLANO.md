@@ -91,3 +91,11 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Validação de integridade: imagens confirmadas pela API Git Trees com tamanho e SHA. A API genérica de leitura GitHub não retorna conteúdo binário, portanto erros de UTF-8 não equivalem a ausência dos arquivos.
 - Pendências críticas: converter imagens de show para formatos responsivos otimizados e medir o LCP/CLS/INP em navegador; confirmar recortes no mobile sem perder músicos; verificar URLs de fotos ainda externas; auditar os 34 vídeos de Coordenadas antes de selecioná-los; criar preview independente com teste de ponta a ponta.
 - Produção intacta. Não há autorização para merge da `main` ou publicação automática.
+
+
+## Rodada: Instagram em evidência — 05/11/2026
+- Implementado em `editorial-2026.css` (commit `b19c5e9`): cartão do Instagram no hero ampliado, gradiente colorido inspirado na identidade pública do Instagram, ícone maior, contraste reforçado, selo editorial, foco por teclado e ajustes específicos em mobile.
+- Cabeçalho: atalho do Instagram agora recebe fundo em gradiente, maior destaque e estados hover/focus.
+- Mantidas todas as fotografias reais e a regra de preservação integral das fisionomias; não houve mudanças em imagens, agenda, conteúdo ou produção.
+- Próximos testes: verificar visual real em navegador desktop/mobile, legibilidade e sobreposição com a fotografia do hero, contraste e eventual ajuste antes da publicação.
+- Produção continua intacta: alteração exclusiva à branch `redesign-editorial-2026`.
