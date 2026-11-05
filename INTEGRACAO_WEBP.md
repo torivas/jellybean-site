@@ -46,3 +46,12 @@ Após instalar, inspecione `git diff`, execute `node tools/site-smoke-test.cjs` 
 - O acesso ao GitHub para upload binário pelo contêiner segue bloqueado por DNS; o conector textual do GitHub não consome automaticamente arquivos locais. Assim **os WebP ainda não estão no repositório** e as referências de produção não foram trocadas.
 - A prévia **isolada** `preview-otimizadas.html` foi renderizada via Playwright com os 5 WebP embutidos como data URLs, evitando a restrição de rede: verificações nas larguras 390, 768 e 1440 px deram 6/6 imagens carregadas, sem overflow horizontal e com o link do Instagram presente. Capturas PNG dessas três dimensões foram geradas e inspecionadas. **Esse teste não valida o site completo da branch.**
 - Integração recomendada no clone real após baixar o ZIP entregue na conversa: `python3 tools/apply-webp-package.py /caminho/webp-integration-package.zip` e `node tools/site-smoke-test.cjs`. Em seguida executar QA visual real e `git diff` antes do commit; nunca publicar automaticamente.
+
+
+## Validação adicional de identidade e integridade — 05/11/2026
+
+- O pacote ZIP foi reaberto e os cinco arquivos WebP passaram na comparação SHA-256 com o manifesto original, além de teste de decodificação pelo Pillow; nenhum arquivo precisou ser regenerado.
+- Commit `3762b66`: `tools/apply-webp-package.py` agora compara **também** o SHA-256 do JPEG existente no checkout com o original aprovado e recusa alterações locais pendentes em `index.html` antes de modificar o HTML. A checagem evita instalar uma foto diferente sob nome igual.
+- Commit `91f5b70`: criado `WEBP_MEDIA_MANIFEST.json` com os cinco pares de caminhos, pesos e hashes originais e otimizados. Manifesto identifica explicitamente que os WebP **ainda não foram commitados ao GitHub**.
+- As capturas anteriores eram de uma **prévia isolada**, não do site completo. Não mostrar imagens genéricas de pessoas como se fossem músicos da Jelly Bean.
+- A transferência dos arquivos binários para a branch ainda é uma dependência real do checkout local; não atualizar links `picture/srcset` antes da presença de cada arquivo no repositório.
