@@ -149,3 +149,16 @@ body{background:var(--deep);color:var(--paper)}
 @media(max-width:700px){.hero-instagram{margin-top:17px;gap:10px;padding:7px 10px 7px 7px}.hero-instagram-icon{width:44px;height:44px}.hero-instagram-icon svg{width:25px;height:25px}.hero-instagram-text small{font-size:9px}.hero-instagram-text strong{font-size:18px}.hero-instagram-arrow{margin-left:1px}.hero-scroll-cue{display:none}}
 @media(max-width:380px){.hero-instagram{margin-top:13px}.hero-instagram-icon{width:40px;height:40px}.hero-instagram-text strong{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.hero-instagram{transition:none}.hero-instagram:hover,.hero-instagram:focus-visible{transform:rotate(-1deg)}}
+
+
+/* Accessible Instagram link is always visible in the navigation bar. */
+.header .brand{order:1}
+.header #site-nav{order:3}
+.header .menu-btn{order:4}
+.header-instagram{order:2;display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-left:auto;margin-right:clamp(15px,2vw,32px);min-width:44px;min-height:44px;color:#E9E3D8;border:1px solid rgba(233,227,216,.3);padding:7px 10px;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.header-instagram svg{width:24px;height:24px;flex:none}
+.header-instagram-label{font:700 12px 'Archivo Narrow',sans-serif;letter-spacing:.13em}
+.header-instagram:hover,.header-instagram:focus-visible{background:#B66A2C;border-color:#B66A2C;color:#171717}
+@media(max-width:980px){.header-instagram{margin-right:12px;margin-left:auto}.header-instagram-label{display:none}.header #site-nav{order:5}.header .menu-btn{order:4}}
+@media(max-width:640px){.header-instagram{width:44px;height:44px;padding:8px}.header-instagram svg{width:24px;height:24px}}
+@media(prefers-reduced-motion:reduce){.header-instagram{transition:none}}
