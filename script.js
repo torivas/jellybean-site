@@ -39,3 +39,69 @@ if(reduceMotion || !('IntersectionObserver' in window)){
 
   revealElements.forEach(el=>observer.observe(el));
 }
+
+
+/* Progressive reading feedback and image gallery. */
+const progressFill = document.querySelector('#reading-progress-fill');
+let progressQueued = false;
+function renderReadingProgress(){
+  if(!progressFill) return;
+  const maximum = document.documentElement.scrollHeight - window.innerHeight;
+  const fraction = maximum > 0 ? Math.min(1,Math.max(0,window.scrollY / maximum)) : 0;
+  progressFill.style.transform = 'scaleX(' + fraction + ')';
+  progressQueued = false;
+}
+window.addEventListener('scroll',()=>{
+  if(!progressQueued){progressQueued=true;requestAnimationFrame(renderReadingProgress)}
+},{passive:true});
+window.addEventListener('resize',renderReadingProgress,{passive:true});
+renderReadingProgress();
+
+const gallery = document.querySelector('#gallery-collection');
+const galleryDialog = document.querySelector('#gallery-dialog');
+if(gallery && galleryDialog && typeof galleryDialog.showModal === 'function'){
+  const items = Array.from(gallery.querySelectorAll('.gallery-item')).filter(item=>item.querySelector('img'));
+  const largeImage = galleryDialog.querySelector('.gallery-dialog-inner img');
+  const caption = galleryDialog.querySelector('.gallery-dialog-caption');
+  const count = galleryDialog.querySelector('.gallery-count');
+  let activeIndex = 0;
+  let lastFocused = null;
+  function displayImage(index){
+    if(!items.length) return;
+    activeIndex = (index+items.length)%items.length;
+    const source = items[activeIndex].querySelector('img');
+    largeImage.src = source.currentSrc || source.src;
+    largeImage.alt = source.alt || 'Registro da Jelly Bean';
+    caption.textContent = source.alt || '';
+    count.textContent = (activeIndex+1)+' / '+items.length;
+  }
+  items.forEach((item,index)=>{
+    item.setAttribute('tabindex','0');
+    item.setAttribute('role','button');
+    item.setAttribute('aria-label','Ampliar foto '+(index+1)+' de '+items.length);
+    const open=()=>{
+      lastFocused=document.activeElement;
+      displayImage(index);
+      galleryDialog.showModal();
+      galleryDialog.querySelector('.gallery-dialog-close').focus();
+    };
+    item.addEventListener('click',open);
+    item.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();open()}
+    });
+  });
+  galleryDialog.querySelector('.gallery-dialog-close').addEventListener('click',()=>galleryDialog.close());
+  galleryDialog.querySelector('.gallery-prev').addEventListener('click',()=>displayImage(activeIndex-1));
+  galleryDialog.querySelector('.gallery-next').addEventListener('click',()=>displayImage(activeIndex+1));
+  galleryDialog.addEventListener('keydown',event=>{
+    if(event.key==='ArrowLeft'){event.preventDefault();displayImage(activeIndex-1)}
+    if(event.key==='ArrowRight'){event.preventDefault();displayImage(activeIndex+1)}
+  });
+  galleryDialog.addEventListener('click',event=>{
+    if(event.target===galleryDialog) galleryDialog.close();
+  });
+  galleryDialog.addEventListener('close',()=>{
+    largeImage.removeAttribute('src');
+    if(lastFocused && typeof lastFocused.focus==='function') lastFocused.focus();
+  });
+}
