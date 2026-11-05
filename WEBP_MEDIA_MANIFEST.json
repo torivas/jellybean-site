@@ -1,0 +1,47 @@
+{
+  "description": "Jelly Bean officially sourced photographs. Preserve originals and recognizable musicians. No generated people.",
+  "status": "optimized WebPs exist in conversation bundle, not yet checked into GitHub",
+  "algorithm": "SHA-256",
+  "photos": [
+    {
+      "original": "img/hero/jellybean-banda-oficial.jpg",
+      "webp": "img/optimized/hero/jellybean-banda-oficial.webp",
+      "original_bytes": 409516,
+      "webp_bytes": 119934,
+      "original_sha256": "62f276491b8183815989e88df9172b0e95645916e794d3a3be63452beb1d1c43",
+      "webp_sha256": "5f83f15baa93c7f44a4108e7a19bc65f140bc43787f993f06bd52b5af2b99afd"
+    },
+    {
+      "original": "img/shows/colonus-vocal.jpg",
+      "webp": "img/optimized/shows/colonus-vocal.webp",
+      "original_bytes": 1431096,
+      "webp_bytes": 140382,
+      "original_sha256": "2d9c1795195494320973d7512c3c9a77aff5520c566e5944b9d1f26915af20d1",
+      "webp_sha256": "b30827899e22c29080abf8d4d5b24cf7e87e3e006c3042035e5e38424d564a92"
+    },
+    {
+      "original": "img/shows/coordenadas-palco.jpg",
+      "webp": "img/optimized/shows/coordenadas-palco.webp",
+      "original_bytes": 1610851,
+      "webp_bytes": 167128,
+      "original_sha256": "294f084f9061f74e6b8f4c4859c249683132b716bf1f2c33f1a752f92b0aadc8",
+      "webp_sha256": "7a42f7073b3e26c7ec7486f83b3f9575db0e9e96d9183c84f035b2c3b3d94b4f"
+    },
+    {
+      "original": "img/shows/colonus-banda.jpg",
+      "webp": "img/optimized/shows/colonus-banda.webp",
+      "original_bytes": 1068799,
+      "webp_bytes": 153788,
+      "original_sha256": "f8848ee2f8a0d1003747c8be8f5496a0900b80a17eca090fca39240424dff2ea",
+      "webp_sha256": "888e7325eba056ae5bdc2e9ff0b9c98ff9d7191748b5801285913b5ba3a53cc2"
+    },
+    {
+      "original": "img/Membros/fernando-vasques.jpg",
+      "webp": "img/optimized/Membros/fernando-vasques.webp",
+      "original_bytes": 6890288,
+      "webp_bytes": 105944,
+      "original_sha256": "bd00617958a8551543e88404aeb07a66185f106baedc04c19775776d3d851d57",
+      "webp_sha256": "c92b9a1dc1db7949d5cf54f0e6468fcccfd0db00bd78110d3d0c105d6f419467"
+    }
+  ]
+}
