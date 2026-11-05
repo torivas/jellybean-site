@@ -109,3 +109,8 @@ body{background:var(--deep);color:var(--paper)}
 }
 @media (max-width:380px){.editorial-hero{min-height:760px}.editorial-hero-content{min-height:760px;padding:350px 17px 78px}.editorial-hero h1{font-size:85px}.hero-poster-note p{font-size:23px}.editorial-button{font-size:12px}}
 @media (prefers-reduced-motion:reduce){.editorial-button{transition:none}.editorial-button:hover{transform:none}.editorial-hero-image img{transform:none}}
+
+/* Identity-lock framing: preserve the full four-person portrait at every breakpoint. */
+.editorial-hero-image img{object-fit:contain;object-position:top center}
+@media(max-width:960px){.editorial-hero-image img{object-fit:contain;object-position:center top}}
+@media(max-width:700px){.editorial-hero-image{height:55%}.editorial-hero-image img{object-fit:contain;object-position:center top}}
