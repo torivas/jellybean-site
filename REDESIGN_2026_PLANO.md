@@ -138,3 +138,12 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Rodar localmente no clone: `node tools/site-smoke-test.cjs && node tools/media-budget.cjs`. Os scripts não dependem de serviço pago, não modificam originais e não publicam nada. Não foram executados em clone Node nesta sessão; a inspeção dos caminhos foi feita via árvore do GitHub.
 - Limitação técnica: leitura da imagem binária pelo conector retornou erro de decodificação UTF-8, e o contêiner não conseguiu resolver o host GitHub para baixá-la. Assim **nenhuma compressão de imagem foi realizada** e nenhuma fotografia foi substituída.
 - Próxima intervenção com acesso binário: gerar cópias JPEG/WebP com tamanhos adequados, conferir visualmente as feições e apenas então atualizar referências para `picture/srcset` com fallback original. Sem regenerar rostos, sem alterar a `main`.
+
+
+## Rodada seguinte: pipeline seguro para otimização e prévia — 05/11/2026
+- Tentativa de download binário por HTTP no contêiner falhou (DNS para `raw.githubusercontent.com`), assim não houve recompressão efetiva nem upload de WebP.
+- Adicionado `tools/optimize-media.py` (commit `5b31080`): geração **opt-in** de cópias WebP em `img/optimized/` com Pillow, mantendo JPEGs originais e sem qualquer uso de IA facial. Por padrão opera apenas em inventário; `--write` é explícito.
+- Adicionado `tools/browser-qa.mjs` (commits `1d3fc95`, `ac8301d`, `b007bcf`): harness Playwright opcional para capturas 360, 390, 768, 1440 px e verificações de overflow, Instagram e carregamento do hero em preview local.
+- Adicionado `QA_PREVIEW.md` (commit `ffa1d1a`) com instruções para prévia HTTP local, testes, inspeção manual de fisionomia e portão de aprovação.
+- Confirmado readback dos três novos arquivos na branch; **nenhum dos scripts foi executado em um clone local nesta sessão**. A conversão real e a revisão por screenshot seguem pendentes de acesso aos arquivos binários/browser.
+- A branch `main`, o site de produção e as fotos originais permanecem intactos.
