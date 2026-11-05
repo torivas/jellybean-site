@@ -82,3 +82,12 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Verificação com GitHub readback: index, CSS base, CSS editorial e script íntegros; sintaxe JS validada.
 - Limite conhecido: preview do raw.githack e links Googleusercontent não puderam ser testados via navegador automatizado nesta rodada; não afirmar certificação de performance/responsividade ou publicação.
 - Decisões seguintes: espelhar fotografias autorizadas em assets estáveis e otimizados, validar o hero em celular real, auditar contraste e testes Lighthouse; revisar vídeo antes de qualquer autoplay silencioso.
+
+
+## Instagram e estabilidade de imagens — 05/11/2026
+- Instagram oficial `https://www.instagram.com/bandajellybean/`: ícone SVG em estilo selo editorial, visível no cabeçalho fixo (desktop/mobile) e no hero, ambos acessíveis com texto `aria-label` e foco de teclado.
+- Concluída primeira migração de 4 fotografias para assets versionados no GitHub, sem alteração de pixels/rostos: `img/hero/jellybean-banda-oficial.jpg` (409516 bytes, original `JELLY BEAN_REDE SOCIAL-15.jpg`, Drive ID `1t1oTTLKdDp0lmRsn47C2hGxKL5hqFBLL`); `img/shows/colonus-vocal.jpg` (1431096 bytes, Drive `1xh71EJ8QqTR7aRHb-m3kmxd4l9dawNbB`); `img/shows/coordenadas-palco.jpg` (1610851 bytes, Drive `1Z5nijbaZA_H76NieDwYuwcJj0Z-44Irg`); `img/shows/colonus-banda.jpg` (1068799 bytes, Drive `1fO_WiElXl4_a6xiWpL8db_MGV0WIQqPm`).
+- Primeira imagem do hero passou a utilizar `img/hero/jellybean-banda-oficial.jpg`. A galeria usa as três fotos versionadas nas respectivas posições. Há outras imagens do Drive ainda embutidas no HTML; migração incompleta.
+- Validação de integridade: imagens confirmadas pela API Git Trees com tamanho e SHA. A API genérica de leitura GitHub não retorna conteúdo binário, portanto erros de UTF-8 não equivalem a ausência dos arquivos.
+- Pendências críticas: converter imagens de show para formatos responsivos otimizados e medir o LCP/CLS/INP em navegador; confirmar recortes no mobile sem perder músicos; verificar URLs de fotos ainda externas; auditar os 34 vídeos de Coordenadas antes de selecioná-los; criar preview independente com teste de ponta a ponta.
+- Produção intacta. Não há autorização para merge da `main` ou publicação automática.
