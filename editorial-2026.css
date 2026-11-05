@@ -162,3 +162,67 @@ body{background:var(--deep);color:var(--paper)}
 @media(max-width:980px){.header-instagram{margin-right:12px;margin-left:auto}.header-instagram-label{display:none}.header #site-nav{order:5}.header .menu-btn{order:4}}
 @media(max-width:640px){.header-instagram{width:44px;height:44px;padding:8px}.header-instagram svg{width:24px;height:24px}}
 @media(prefers-reduced-motion:reduce){.header-instagram{transition:none}}
+
+
+/* Rock Editorial / Instagram spotlight v2 — official Instagram glyph, original band portraits untouched. */
+:root{--instagram-pink:#e1306c;--instagram-purple:#833ab4;--instagram-orange:#fd9d32}
+.header-instagram{
+  position:relative;isolation:isolate;overflow:visible;
+  background:linear-gradient(118deg,#5c268e 0%,#b52578 42%,#e8534d 74%,#f8ae42 100%);
+  border:1px solid rgba(255,255,255,.55);color:#fff;
+  box-shadow:0 0 0 3px rgba(225,48,108,.13),0 4px 18px rgba(131,58,180,.3);
+  transform:rotate(-2deg);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.header-instagram::after{
+  content:"";position:absolute;inset:-5px;border:1px dashed rgba(233,227,216,.34);
+  transform:rotate(3deg);pointer-events:none;
+}
+.header-instagram svg{stroke-width:2.1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.header-instagram:hover,.header-instagram:focus-visible{
+  background:linear-gradient(118deg,#5c268e,#b52578 42%,#e8534d 74%,#f8ae42);
+  border-color:#fff;color:#fff;transform:rotate(0) translateY(-2px);
+  box-shadow:0 0 0 4px rgba(225,48,108,.23),0 7px 25px rgba(131,58,180,.48);
+}
+.hero-instagram{
+  border:2px solid rgba(255,255,255,.75);background:linear-gradient(112deg,rgba(19,16,25,.97),rgba(40,20,33,.97));
+  box-shadow:7px 7px 0 rgba(182,106,44,.52),0 0 25px rgba(225,48,108,.12);
+  padding:12px 18px 12px 12px;gap:17px;
+}
+.hero-instagram::before{border-color:rgba(233,227,216,.3);inset:-6px}
+.hero-instagram-icon{
+  width:72px;height:72px;clip-path:none;border-radius:18px;color:#fff;
+  background:linear-gradient(145deg,#833ab4 5%,#c13584 36%,#e1306c 59%,#fd9d32 92%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),0 0 16px rgba(225,48,108,.3);
+  transform:rotate(-5deg);
+}
+.hero-instagram-icon svg{width:43px;height:43px;stroke-width:2}
+.hero-instagram-text{gap:7px}
+.hero-instagram-text small{color:#f4c0ad;letter-spacing:.21em;font-size:12px}
+.hero-instagram-text strong{font-size:clamp(22px,2.3vw,31px);color:#fff}
+.hero-instagram-arrow{font-size:29px;color:#ffd18b;align-self:center}
+.hero-instagram:hover,.hero-instagram:focus-visible{
+  background:linear-gradient(112deg,rgba(36,19,37,.98),rgba(62,23,38,.98));
+  border-color:#ffd6af;box-shadow:9px 9px 0 rgba(182,106,44,.62),0 0 29px rgba(225,48,108,.3);
+}
+.hero-instagram:focus-visible,.header-instagram:focus-visible{outline:3px solid #fff;outline-offset:6px}
+@media(max-width:700px){
+ .hero-instagram{gap:11px;padding:9px 11px 9px 9px;margin-top:19px;max-width:min(100%,370px)}
+ .hero-instagram-icon{width:55px;height:55px;border-radius:13px}
+ .hero-instagram-icon svg{width:33px;height:33px}
+ .hero-instagram-text small{font-size:10px;letter-spacing:.11em}
+ .hero-instagram-text strong{font-size:clamp(17px,5vw,22px)}
+ .hero-instagram-arrow{font-size:24px;margin-left:0}
+ .header-instagram{width:49px;height:49px;min-width:49px}
+ .header-instagram svg{width:27px;height:27px}
+}
+@media(max-width:380px){
+ .hero-instagram{gap:8px;padding:8px}
+ .hero-instagram-icon{width:48px;height:48px;border-radius:12px}
+ .hero-instagram-icon svg{width:28px;height:28px}
+ .hero-instagram-text small{font-size:9px;letter-spacing:.055em}
+ .hero-instagram-text strong{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-instagram,.header-instagram{transition:none}
+ .header-instagram:hover,.header-instagram:focus-visible{transform:rotate(-2deg)}
+}
