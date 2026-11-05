@@ -72,3 +72,13 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Atualização visual inclui torn paper edge em CSS, duas manchas gráficas, cabeçalho do pôster, CTA agenda + contratação, collage, responsividade e redução de movimento. Sem dependências JS ou bibliotecas adicionais para esses efeitos.
 - QA de leitura realizado: quatro arquivos carregados pelo conector, stylesheet referenciado, JS sintaticamente válido, URLs de fotos canônicas e presença de semântica de galeria/teclado. QA de navegador, acessibilidade dinâmica e desempenho ainda não realizados.
 - Pendências: publicar ativos otimizados em hospedagem estável, testar links de imagem em rede pública, revisar os 34 vídeos de Coordenadas, verificar o hero em dimensões reais e mobile, executar Lighthouse e testar navegação por teclado. Não fundir nem publicar antes de aprovação.
+
+
+## Rodada de robustez UX — 05/11/2026
+- Branch de desenvolvimento atualizada com preconnect de imagem, prioridade para fotografia principal, metadados, script diferido.
+- Falhas de carregamento da galeria recebem mensagem de recuperação; não sugerir que URL Drive pública esteja validada.
+- Correções: menu mobile fecha ao tocar fora, tecla Escape devolve foco ao botão, resize fecha menu; suporte a redução de movimento.
+- Progressive enhancement: sem JS, textos e seções não ficam invisíveis por causa da animação de entrada.
+- Verificação com GitHub readback: index, CSS base, CSS editorial e script íntegros; sintaxe JS validada.
+- Limite conhecido: preview do raw.githack e links Googleusercontent não puderam ser testados via navegador automatizado nesta rodada; não afirmar certificação de performance/responsividade ou publicação.
+- Decisões seguintes: espelhar fotografias autorizadas em assets estáveis e otimizados, validar o hero em celular real, auditar contraste e testes Lighthouse; revisar vídeo antes de qualquer autoplay silencioso.
