@@ -59,3 +59,16 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - A versão de referência Foo Fighters serve como benchmark, não licença de reprodução.
 - Arquivos de mídia originais podem ter restrições e formatos inadequados para web. Não alterar Drive.
 - Sem comprovação de licenças de gravações para trilha, não adicionar áudio automático.
+
+
+## Implementação: Rock Editorial Experience — 05/11/2026
+- Conceito expressivo aprovado pelo responsável: cartaz editorial, sobreposição de texturas e recortes, headline de alto impacto, uso controlado de âmbar.
+- Arquivos alterados apenas na branch `redesign-editorial-2026`: `index.html` e novo `editorial-2026.css` (a base `style.css` permanece intacta).
+- Foto do hero: original `JELLY BEAN 04.jpg`, Drive ID `1ZEAXjhcntR47dM_HDRZLmfRmC22KK62C`; mostra os quatro integrantes reais. Não usar imagens sintéticas de pessoas.
+- Galeria: selecionar originais de Colonus e Coordenadas Bar por IDs canônicos do catálogo e pastas oficiais; verificar direitos de uso e disponibilidade das URLs.
+- Regra identity lock expressa: nunca regenerar, misturar, retocar traços faciais, mudar cabelo, barba, expressão ou idade aparente. Aplicar apenas recorte, enquadramento sem excluir integrantes, ajustes globais de luz/cor e elementos não faciais. Se a identidade não puder ser verificada, rejeitar a peça.
+- A criação de imagem por IA fica limitada a fundos, materiais, textura, grafismo e cenários sem pessoas identificáveis; integrar fotos originais como camadas fotográficas não regeneradas.
+- Cuidado de conteúdo: não afirmar repertório autoral, agenda, número de espectadores ou prestígio sem confirmação. Dados reais prevalecem.
+- Atualização visual inclui torn paper edge em CSS, duas manchas gráficas, cabeçalho do pôster, CTA agenda + contratação, collage, responsividade e redução de movimento. Sem dependências JS ou bibliotecas adicionais para esses efeitos.
+- QA de leitura realizado: quatro arquivos carregados pelo conector, stylesheet referenciado, JS sintaticamente válido, URLs de fotos canônicas e presença de semântica de galeria/teclado. QA de navegador, acessibilidade dinâmica e desempenho ainda não realizados.
+- Pendências: publicar ativos otimizados em hospedagem estável, testar links de imagem em rede pública, revisar os 34 vídeos de Coordenadas, verificar o hero em dimensões reais e mobile, executar Lighthouse e testar navegação por teclado. Não fundir nem publicar antes de aprovação.
