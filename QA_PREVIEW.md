@@ -36,7 +36,7 @@ npx playwright install chromium
 SITE_URL=http://127.0.0.1:8000 node tools/browser-qa.mjs
 ```
 
-O script registra capturas em `qa-output/` nos tamanhos 360, 390, 768 e 1440 px, verificando overflow horizontal, Instagram no cabeçalho e carregamento do hero. Inspecione manualmente legibilidade, menu, lightbox, todas as faces, rodapé e CTAs. Remova arquivos temporários não desejados antes de fazer commit.
+O script registra capturas em `qa-output/` nos tamanhos 360, 390, 768 e 1440 px, verificando overflow horizontal, Instagram no cabeçalho, carregamento do hero, abertura/fechamento do menu mobile e funcionamento do lightbox por teclado. Os testes automatizados não garantem a preservação visual das feições: compare manualmente cada imagem original com sua cópia. Inspecione manualmente legibilidade, menu, lightbox, todas as faces, rodapé e CTAs. Remova arquivos temporários não desejados antes de fazer commit.
 
 ## 4. Critérios antes de propor publicação
 
