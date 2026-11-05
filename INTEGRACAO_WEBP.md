@@ -37,3 +37,12 @@ Após instalar, inspecione `git diff`, execute `node tools/site-smoke-test.cjs` 
 - Navegação de teste do contêiner bloqueou acesso a `file://` e servidor `localhost` (ERR_BLOCKED_BY_ADMINISTRATOR); **sem certificação visual real**.
 - Três retratos restantes e imagens externas ainda precisam de curadoria e otimização.
 - Sem merge, deploy ou alteração de produção.
+
+
+## Avanço — execução da prévia e instalador versionado
+
+- Adicionado ao GitHub o instalador `tools/apply-webp-package.py` (commit `db260db`), que recebe diretamente o ZIP entregue ao usuário, verifica SHA-256 dos 5 WebP, exige a branch `redesign-editorial-2026`, preserva todos os JPEGs originais e cria tags `<picture>` com fallback JPEG.
+- Criado `.gitignore` (commit `edc387b`) para evitar commit acidental de capturas, backups e dependências.
+- O acesso ao GitHub para upload binário pelo contêiner segue bloqueado por DNS; o conector textual do GitHub não consome automaticamente arquivos locais. Assim **os WebP ainda não estão no repositório** e as referências de produção não foram trocadas.
+- A prévia **isolada** `preview-otimizadas.html` foi renderizada via Playwright com os 5 WebP embutidos como data URLs, evitando a restrição de rede: verificações nas larguras 390, 768 e 1440 px deram 6/6 imagens carregadas, sem overflow horizontal e com o link do Instagram presente. Capturas PNG dessas três dimensões foram geradas e inspecionadas. **Esse teste não valida o site completo da branch.**
+- Integração recomendada no clone real após baixar o ZIP entregue na conversa: `python3 tools/apply-webp-package.py /caminho/webp-integration-package.zip` e `node tools/site-smoke-test.cjs`. Em seguida executar QA visual real e `git diff` antes do commit; nunca publicar automaticamente.
