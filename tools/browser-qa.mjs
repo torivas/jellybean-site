@@ -25,6 +25,10 @@ try {
       await page.goto(base, { waitUntil: 'domcontentloaded', timeout: 30000 });
       await page.evaluate(() => document.fonts.ready);
       await page.locator('#hero-title').waitFor();
+      await page.waitForFunction(() => {
+        const img = document.querySelector('.editorial-hero-image img');
+        return img && img.complete;
+      }, { timeout: 15000 });
       const overflow = await page.evaluate(() =>
         document.documentElement.scrollWidth > window.innerWidth + 2
       );
