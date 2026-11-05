@@ -69,50 +69,103 @@ renderReadingProgress();
 
 const gallery = document.querySelector('#gallery-collection');
 const galleryDialog = document.querySelector('#gallery-dialog');
-if(gallery && galleryDialog && typeof galleryDialog.showModal === 'function'){
-  const items = Array.from(gallery.querySelectorAll('.gallery-item')).filter(item=>item.querySelector('img'));
+if (gallery && galleryDialog && typeof galleryDialog.showModal === 'function') {
+  const items = Array.from(gallery.querySelectorAll('.gallery-item')).filter(item => item.querySelector('img'));
   const largeImage = galleryDialog.querySelector('.gallery-dialog-inner img');
   const caption = galleryDialog.querySelector('.gallery-dialog-caption');
   const count = galleryDialog.querySelector('.gallery-count');
-  let activeIndex = 0;
+  const closeButton = galleryDialog.querySelector('.gallery-dialog-close');
+  let activeItem = null;
   let lastFocused = null;
-  function displayImage(index){
-    if(!items.length) return;
-    activeIndex = (index+items.length)%items.length;
-    const source = items[activeIndex].querySelector('img');
-    largeImage.src = source.currentSrc || source.src;
-    largeImage.onerror = () => { caption.textContent = 'Esta fotografia não está disponível. Use as setas para continuar.'; };
-    largeImage.alt = source.alt || 'Registro da Jelly Bean';
-    caption.textContent = source.alt || '';
-    count.textContent = (activeIndex+1)+' / '+items.length;
+
+  const availableItems = () => items.filter(item => !item.classList.contains('gallery-image-unavailable'));
+
+  function markUnavailable(item) {
+    if (item.classList.contains('gallery-image-unavailable')) return;
+    item.classList.add('gallery-image-unavailable');
+    item.setAttribute('aria-disabled', 'true');
+    item.removeAttribute('tabindex');
+    item.removeAttribute('role');
+    item.setAttribute('aria-label', 'Fotografia indisponível');
+    const source = item.querySelector('img');
+    if (source) source.alt = '';
+    const notice = document.createElement('span');
+    notice.className = 'gallery-image-fallback';
+    notice.textContent = 'Registro temporariamente indisponível';
+    item.appendChild(notice);
   }
-  items.forEach((item,index)=>{
-    item.setAttribute('tabindex','0');
-    item.setAttribute('role','button');
-    item.setAttribute('aria-label','Ampliar foto '+(index+1)+' de '+items.length);
-    const open=()=>{
-      lastFocused=document.activeElement;
-      displayImage(index);
+
+  function displayImage(item) {
+    const available = availableItems();
+    if (!available.length) {
+      galleryDialog.close();
+      return;
+    }
+    activeItem = available.includes(item) ? item : available[0];
+    const source = activeItem.querySelector('img');
+    caption.textContent = source.alt || 'Registro da Jelly Bean';
+    largeImage.alt = source.alt || 'Registro da Jelly Bean';
+    largeImage.removeAttribute('src');
+    largeImage.src = source.currentSrc || source.src;
+    count.textContent = (available.indexOf(activeItem) + 1) + ' / ' + available.length;
+  }
+
+  function navigate(offset) {
+    const available = availableItems();
+    if (!available.length) { galleryDialog.close(); return; }
+    const index = available.indexOf(activeItem);
+    displayImage(available[(Math.max(index, 0) + offset + available.length) % available.length]);
+  }
+
+  items.forEach((item, index) => {
+    const source = item.querySelector('img');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', 'Ampliar foto ' + (index + 1));
+    source.addEventListener('error', () => markUnavailable(item));
+    if (source.complete && source.naturalWidth === 0) markUnavailable(item);
+    const open = () => {
+      if (item.classList.contains('gallery-image-unavailable')) return;
+      lastFocused = document.activeElement;
+      displayImage(item);
       galleryDialog.showModal();
-      galleryDialog.querySelector('.gallery-dialog-close').focus();
+      closeButton.focus();
     };
-    item.addEventListener('click',open);
-    item.addEventListener('keydown',event=>{
-      if(event.key==='Enter'||event.key===' '){event.preventDefault();open()}
+    item.addEventListener('click', open);
+    item.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
+      }
     });
   });
-  galleryDialog.querySelector('.gallery-dialog-close').addEventListener('click',()=>galleryDialog.close());
-  galleryDialog.querySelector('.gallery-prev').addEventListener('click',()=>displayImage(activeIndex-1));
-  galleryDialog.querySelector('.gallery-next').addEventListener('click',()=>displayImage(activeIndex+1));
-  galleryDialog.addEventListener('keydown',event=>{
-    if(event.key==='ArrowLeft'){event.preventDefault();displayImage(activeIndex-1)}
-    if(event.key==='ArrowRight'){event.preventDefault();displayImage(activeIndex+1)}
+
+  largeImage.addEventListener('error', () => {
+    if (activeItem) markUnavailable(activeItem);
+    const available = availableItems();
+    if (available.length) displayImage(available[0]);
+    else {
+      largeImage.removeAttribute('src');
+      caption.textContent = 'Não foi possível carregar as fotografias.';
+      count.textContent = '0 / 0';
+    }
   });
-  galleryDialog.addEventListener('click',event=>{
-    if(event.target===galleryDialog) galleryDialog.close();
+  closeButton.addEventListener('click', () => galleryDialog.close());
+  galleryDialog.querySelector('.gallery-prev').addEventListener('click', () => navigate(-1));
+  galleryDialog.querySelector('.gallery-next').addEventListener('click', () => navigate(1));
+  galleryDialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); navigate(-1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); navigate(1); }
   });
-  galleryDialog.addEventListener('close',()=>{
+  galleryDialog.addEventListener('click', event => {
+    if (event.target === galleryDialog) galleryDialog.close();
+  });
+  galleryDialog.addEventListener('close', () => {
     largeImage.removeAttribute('src');
-    if(lastFocused && typeof lastFocused.focus==='function') lastFocused.focus();
+    largeImage.alt = '';
+    activeItem = null;
+    if (lastFocused && lastFocused.isConnected && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
   });
 }
