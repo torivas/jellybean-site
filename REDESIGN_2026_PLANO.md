@@ -129,3 +129,12 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - O smoke test foi checado por inspeção de código e validações equivalentes no conector; **a execução do script pelo Node em clone local não foi realizada**.
 - A otimização real dos arquivos JPEG (incluindo um retrato com aproximadamente 6,9 MB), revisão dos 34 vídeos, teste visual com Chrome e aferição Lighthouse continuam pendentes. Não afirmar ganhos numéricos de desempenho.
 - Sem merge ou publicação; produção `main` preservada, fotos originais e fisionomias intactas.
+
+
+## Rodada: inventário de imagens e orçamento de performance — 05/11/2026
+- Inspeção da árvore GitHub da branch revelou 8 JPEGs locais, total 14.399.018 bytes (aprox. 13,73 MiB). Isso é peso total do acervo, **não** bytes transferidos por visita.
+- Foto oficial do hero: 409.516 bytes, sob o limite inicial de 500 KiB. O maior arquivo é `img/Membros/fernando-vasques.jpg`: 6.890.288 bytes (~6,57 MiB). Outros 6 JPEGs também ultrapassam os budgets estabelecidos.
+- Criado `tools/media-budget.cjs` (commit `2614484`) para inventariar os tamanhos das fotos locais, alertar sobre orçamento e bloquear por código de saída arquivos obrigatórios ausentes.
+- Rodar localmente no clone: `node tools/site-smoke-test.cjs && node tools/media-budget.cjs`. Os scripts não dependem de serviço pago, não modificam originais e não publicam nada. Não foram executados em clone Node nesta sessão; a inspeção dos caminhos foi feita via árvore do GitHub.
+- Limitação técnica: leitura da imagem binária pelo conector retornou erro de decodificação UTF-8, e o contêiner não conseguiu resolver o host GitHub para baixá-la. Assim **nenhuma compressão de imagem foi realizada** e nenhuma fotografia foi substituída.
+- Próxima intervenção com acesso binário: gerar cópias JPEG/WebP com tamanhos adequados, conferir visualmente as feições e apenas então atualizar referências para `picture/srcset` com fallback original. Sem regenerar rostos, sem alterar a `main`.
