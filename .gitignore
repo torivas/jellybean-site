@@ -1,0 +1,7 @@
+# Local preview and test artifacts
+qa-output/
+index.html.before-webp.bak
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
