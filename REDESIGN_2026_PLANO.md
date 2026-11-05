@@ -147,3 +147,12 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Adicionado `QA_PREVIEW.md` (commit `ffa1d1a`) com instruções para prévia HTTP local, testes, inspeção manual de fisionomia e portão de aprovação.
 - Confirmado readback dos três novos arquivos na branch; **nenhum dos scripts foi executado em um clone local nesta sessão**. A conversão real e a revisão por screenshot seguem pendentes de acesso aos arquivos binários/browser.
 - A branch `main`, o site de produção e as fotos originais permanecem intactos.
+
+
+## Continuidade: inspeção de automação de QA — 05/11/2026
+- Verificado no ambiente de execução: Chromium e Python Pillow disponíveis; porém o diretório com assets binários do projeto está vazio e tentativa HTTP de baixar o GitHub falhou por DNS. Não houve compressão, capturas ou teste end-to-end real.
+- O teste `tools/browser-qa.mjs` foi ampliado (commit `718589e`) para avaliar abertura e fechamento do menu mobile, navegação por Escape e abertura/fechamento do lightbox por teclado, além de overflow e Instagram.
+- Documento `QA_PREVIEW.md` atualizado (commit `2d2e5e8`) com os novos critérios e reforço de inspeção humana de identidade.
+- Os dois arquivos foram gravados na branch de desenvolvimento; a execução deles depende de um checkout local com as imagens e do ambiente Playwright configurado.
+- Próxima prioridade real: obter acesso aos JPEGs originais por via binária autorizada, executar otimização em cópias, validar faces e rodar as capturas. Não declarar que o site passou no QA antes de executar os testes.
+- `main` e publicação intactas.
