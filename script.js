@@ -1,4 +1,8 @@
 const menuButton = document.querySelector('.menu-btn');
+// Keep all content visible if JavaScript or IntersectionObserver is unavailable.
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.documentElement.classList.add('motion-ready');
+}
 const nav = document.querySelector('#site-nav');
 
 function closeMenu(){
@@ -17,15 +21,21 @@ if(menuButton && nav){
 
   nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
 
-  document.addEventListener('keydown',event=>{
-    if(event.key === 'Escape') closeMenu();
+  document.addEventListener('pointerdown',event=>{
+    if(nav.classList.contains('active') && !nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
   });
+
+  document.addEventListener('keydown',event=>{
+    if(event.key === 'Escape') {const wasOpen=nav.classList.contains('active');closeMenu();if(wasOpen) menuButton.focus();}
+  });
+  window.addEventListener('resize',()=>{if(window.innerWidth>980) closeMenu()},{passive:true});
 }
 
 const revealElements = document.querySelectorAll('.reveal, .reveal-item');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if(reduceMotion || !('IntersectionObserver' in window)){
+  document.documentElement.classList.remove('motion-ready');
   revealElements.forEach(el=>el.classList.add('is-visible'));
 }else{
   const observer = new IntersectionObserver(entries=>{
@@ -71,6 +81,7 @@ if(gallery && galleryDialog && typeof galleryDialog.showModal === 'function'){
     activeIndex = (index+items.length)%items.length;
     const source = items[activeIndex].querySelector('img');
     largeImage.src = source.currentSrc || source.src;
+    largeImage.onerror = () => { caption.textContent = 'Esta fotografia não está disponível. Use as setas para continuar.'; };
     largeImage.alt = source.alt || 'Registro da Jelly Bean';
     caption.textContent = source.alt || '';
     count.textContent = (activeIndex+1)+' / '+items.length;
