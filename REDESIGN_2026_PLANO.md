@@ -99,3 +99,12 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Mantidas todas as fotografias reais e a regra de preservação integral das fisionomias; não houve mudanças em imagens, agenda, conteúdo ou produção.
 - Próximos testes: verificar visual real em navegador desktop/mobile, legibilidade e sobreposição com a fotografia do hero, contraste e eventual ajuste antes da publicação.
 - Produção continua intacta: alteração exclusiva à branch `redesign-editorial-2026`.
+
+
+## Rodada seguinte: contraste, responsividade e semântica — 05/11/2026
+- Commit `59e7906`: corrigidas cores herdadas em seções escuras (galeria e narrativa de show) e nas seções claras (texto da banda), com contraste mais coerente.
+- Ajustado o enquadramento responsivo do hero para `object-fit:contain` sem regenerar/cortar os quatro músicos; nas miniaturas de galeria mobile, `contain` preserva o quadro da fotografia.
+- Estabelecidos offsets de rolagem para âncoras sob cabeçalho fixo, estados de foco na galeria e refinamentos de layout em telas estreitas.
+- Commit `588aeab`: landmarks e títulos identificáveis por acessibilidade, descrições de imagens corrigidas e `decoding=async` em imagens lazy.
+- Revisão estática concluída. Pendente: screenshot/browser QA em múltiplos viewports, validação das imagens externas, conversão/otimização de mídias e Core Web Vitals reais.
+- Nenhuma imagem original foi alterada; nenhuma mudança ocorreu na `main` ou no site publicado. Sem merge/publicação sem aprovação expressa.
