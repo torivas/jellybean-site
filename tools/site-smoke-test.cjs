@@ -27,6 +27,16 @@ for (const src of srcs.filter(src => !/^https?:\/\//.test(src))) {
 check(/fetchpriority="high"/.test(html), 'Hero image is high priority');
 check(/loading="lazy"/.test(html), 'Offscreen images use lazy loading');
 check(html.includes('https://www.instagram.com/bandajellybean/'), 'Official Instagram link is present');
+const galleryMarkup = (html.match(/<div class="gallery-editorial" id="gallery-collection">([\\s\\S]*?)<\\/div>/) || [])[1] || '';
+const gallerySources = [...galleryMarkup.matchAll(/<img\\b[^>]*\\bsrc="([^"]+)"/g)].map(match => match[1]);
+const approvedGallery = new Set([
+  'img/hero/jellybean-banda-oficial.jpg',
+  'img/shows/colonus-vocal.jpg',
+  'img/shows/coordenadas-palco.jpg',
+  'img/shows/colonus-banda.jpg'
+]);
+check(gallerySources.length === 4, 'Gallery includes four verified photographs');
+check(gallerySources.every(src => approvedGallery.has(src)), 'Gallery uses only approved local photographs');
 check(/id="gallery-dialog"/.test(html), 'Gallery dialog exists');
 check(js.includes("source.addEventListener('error'"), 'Gallery handles failed images');
 check(css.includes('.gallery-image-unavailable'), 'Gallery fallback has styling');
