@@ -166,3 +166,12 @@ Fase E: apresentar preview e solicitar aprovação explícita antes de merge/pub
 - Atualizado `index.html` (commit `7b5c329`) com dimensões originais verificadas em sete ocorrências de fotos locais, reduzindo o risco de deslocamento de layout durante o carregamento.
 - Restam três imagens de integrantes não otimizadas nesta rodada, e cinco referências externas no HTML. No Drive, os arquivos homônimos de Walter, Paulinho e Henrique têm tamanhos diferentes dos JPEGs versionados; antes de tratar como mesma versão, comprovar hash/correspondência.
 - Pendências: importar WebPs verificados na branch, verificar referência/fallback visual e executar QA em browser com o repositório completo. Sem merge ou deploy.
+
+
+## Curadoria de segurança — 06/11/2026
+- Confirmação local dos arquivos do pacote `webp-integration-package.zip`: os cinco WebP correspondem aos SHA-256 registrados no manifesto; também confirmei SHA-256 dos cinco JPEGs originais do Drive. Isso não significa que a branch tenha recebido os WebP.
+- Tentativa de acesso HTTPS ao GitHub no contêiner falhou por DNS. O conector GitHub aceita criação de blobs base64, mas não recebe diretamente o caminho dos arquivos do contêiner; portanto **upload binário e substituição de `srcset` não foram realizados**.
+- Commit `0ebb158`: removidas da galeria 3 referências externas ao Googleusercontent sem verificação visual de identidade nesta rodada. A galeria agora contém apenas quatro imagens oficiais locais já verificadas: `colonus-vocal.jpg`, `coordenadas-palco.jpg`, `colonus-banda.jpg` e `jellybean-banda-oficial.jpg`.
+- Commit `6463192`: adicionadas ao smoke test verificações de quantidade (4) e de pertencimento à lista oficial de fontes de imagem da galeria.
+- A imagem genérica mostrada em uma resposta anterior jamais foi integrada ao repositório e não deve ser novamente exibida como integrante da banda.
+- Para publicar, ainda é necessário importar os WebP ao checkout da branch e rodar o teste de browser sobre o site completo; nenhuma alteração na `main`.
